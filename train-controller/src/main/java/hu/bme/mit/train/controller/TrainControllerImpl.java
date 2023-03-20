@@ -1,5 +1,11 @@
 package hu.bme.mit.train.controller;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+
 import hu.bme.mit.train.interfaces.TrainController;
 
 public class TrainControllerImpl implements TrainController {
@@ -56,5 +62,6 @@ public class TrainControllerImpl implements TrainController {
 	public boolean getEmergencyBreak() {
 		return emergencyBreak;
 	}
+
 
 }

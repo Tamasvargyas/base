@@ -1,5 +1,12 @@
 package hu.bme.mit.train.system;
 
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
+
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+
 import hu.bme.mit.train.controller.TrainControllerImpl;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
@@ -12,6 +19,7 @@ public class TrainSystem {
 	private TrainController controller = new TrainControllerImpl();
 	private TrainUser user = new TrainUserImpl(controller);
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
+	Table<LocalDate, Integer, Integer> trainTable = HashBasedTable.create();
 
 	public TrainController getController() {
 		return controller;
@@ -24,5 +32,14 @@ public class TrainSystem {
 	public TrainUser getUser() {
 		return user;
 	}
+
+	public void addRow() {
+		trainTable.put(LocalDate.now(), user.getJoystickPosition(), controller.getReferenceSpeed());		
+	}
+	public Table<LocalDate, Integer, Integer> getTable() {
+		return trainTable;
+	}
+
+	
 
 }

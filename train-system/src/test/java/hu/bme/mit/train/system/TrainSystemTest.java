@@ -1,8 +1,12 @@
 package hu.bme.mit.train.system;
 
+import java.time.LocalDate;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.common.collect.Table;
 
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
@@ -14,10 +18,11 @@ public class TrainSystemTest {
 	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
+	TrainSystem system;
 	
 	@Before
 	public void before() {
-		TrainSystem system = new TrainSystem();
+		system = new TrainSystem();
 		controller = system.getController();
 		sensor = system.getSensor();
 		user = system.getUser();
@@ -54,6 +59,12 @@ public class TrainSystemTest {
 	public void OverridingEmergencyBreak_ActivatesEmergencyBreak() {
 		user.applyEmergencyBreak();
 		Assert.assertEquals(true, controller.getEmergencyBreak());
+	}
+
+	@Test
+	public void testTable() {
+		system.addRow();
+		Assert.assertEquals(false, system.getTable().contains(user.getJoystickPosition(),controller.getReferenceSpeed()));
 	}
 
 	
