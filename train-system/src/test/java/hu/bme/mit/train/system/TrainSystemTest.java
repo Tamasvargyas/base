@@ -50,5 +50,11 @@ public class TrainSystemTest {
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
 
+	@Test
+	public void OverridingEmergencyBreak_ActivatesEmergencyBreak() {
+		user.applyEmergencyBreak();
+		Assert.assertEquals(true, controller.getEmergencyBreak());
+	}
+
 	
 }

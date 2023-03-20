@@ -42,13 +42,19 @@ public class TrainControllerImpl implements TrainController {
 		}
 	}
 
-	private void applyEmergencyBreak() {
+	@Override
+	public void applyEmergencyBreak() {
 		emergencyBreak = true;
 	}
 
 	@Override
 	public void setJoystickPosition(int joystickPosition) {
 		this.step = joystickPosition;		
-	}ű
+	}
+
+	@Override
+	public boolean getEmergencyBreak() {
+		return emergencyBreak;
+	}
 
 }
