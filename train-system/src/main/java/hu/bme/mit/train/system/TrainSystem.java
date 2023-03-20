@@ -33,8 +33,8 @@ public class TrainSystem {
 		return user;
 	}
 
-	public void addRow() {
-		trainTable.put(LocalDate.now(), user.getJoystickPosition(), controller.getReferenceSpeed());		
+	public void addRow(LocalDate date, Integer joy, Integer speed) {
+		trainTable.put(date, joy, speed);		
 	}
 	public Table<LocalDate, Integer, Integer> getTable() {
 		return trainTable;

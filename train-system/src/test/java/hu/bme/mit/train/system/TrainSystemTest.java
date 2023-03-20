@@ -63,8 +63,12 @@ public class TrainSystemTest {
 
 	@Test
 	public void testTable() {
-		system.addRow();
-		Assert.assertEquals(false, system.getTable().contains(user.getJoystickPosition(),controller.getReferenceSpeed()));
+		LocalDate date = LocalDate.now();
+		Integer joy = user.getJoystickPosition();
+		Integer speed = controller.getReferenceSpeed();
+		system.addRow(date, joy, speed);
+		Assert.assertEquals(true, system.getTable().contains(date, joy));
+		Assert.assertEquals(true, system.getTable().contains(date, speed));
 	}
 
 	
