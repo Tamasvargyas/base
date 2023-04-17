@@ -21,6 +21,8 @@ public class TrainSystem {
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
 	Table<LocalDate, Integer, Integer> trainTable = HashBasedTable.create();
 
+	
+
 	public TrainController getController() {
 		return controller;
 	}
@@ -38,6 +40,10 @@ public class TrainSystem {
 	}
 	public Table<LocalDate, Integer, Integer> getTable() {
 		return trainTable;
+	}
+
+	public void runTrain() {		
+		controller.followSpeed();		
 	}
 
 	
