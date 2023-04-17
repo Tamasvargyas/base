@@ -71,5 +71,12 @@ public class TrainSystemTest {
 		Assert.assertEquals(true, system.getTable().contains(date, speed));
 	}
 
+	@Test
+	public void testSpeed() {
+		user.overrideJoystickPosition(1);
+		system.runTrain();
+		Assert.assertEquals(1, controller.getReferenceSpeed());		
+	}
+
 	
 }

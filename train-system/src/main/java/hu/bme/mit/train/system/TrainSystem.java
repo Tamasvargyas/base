@@ -43,7 +43,7 @@ public class TrainSystem {
 	}
 
 	public void runTrain() {		
-		controller.followSpeed();		
+		controller.followSpeed();
 	}
 
 	
